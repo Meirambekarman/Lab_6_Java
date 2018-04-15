@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleof.org">
+<head>
+    <title>Student</title>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="page-header" id="banner">
+        <div class="row">
+            <div class="col-lg-8 col-md-7 col-sm-6">
+                <h1>Student</h1>
+
+                <form class="form-horizontal" th:action="@{/developer/{id}/skills(id=${developer.id})}"
+                      method="post" enctype="multipart/form-data">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Name</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" disabled="disabled"
+                                       th:value="${developer.firstName + ' ' + developer.lastName}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Email</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" disabled="disabled"
+                                       th:value="${developer.email}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Items</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" disabled="disabled"
+                                       th:value="${developer.items}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Receipt</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" disabled="disabled"
+                                       th:value="${developer.receipt}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Phone_Number</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" disabled="disabled"
+                                       th:value="${developer.phoneNumber}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Address</label>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" disabled="disabled"
+                                       th:value="${developer.address}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Skills</label>
+                            <div class="col-lg-10">
+                                <div th:each="skill: ${developer.skills}">
+                                    <span th:text="${skill.city}"/> - <span th:text="${skill.region}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-6 col-lg-offset-2">
+                                <div class="input-group">
+                                    <select name="skillId" class="form-control">
+                                        <option th:each="skill : ${skills}"
+                                                th:value="${skill.id}"
+                                                th:text="${skill.region}">Skill</option>
+                                    </select>
+                                    <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-default">Add region</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
